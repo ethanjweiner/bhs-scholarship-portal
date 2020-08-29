@@ -137,6 +137,7 @@ export default {
 
 .sign-up {
   max-width: 600px;
+  margin-top: 150px !important;
 
   h1 {
     @include big-font();

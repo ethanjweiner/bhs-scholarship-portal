@@ -1,5 +1,5 @@
 <template>
-  <div class="main-nav navbar navbar-expand-lg">
+  <div class="main-nav navbar fixed-top navbar-expand-lg">
     <router-link to="/">
       <a class="navbar-brand logo">
         <img width="60" height="35" src="@/assets/images/bhs_scholarship_portal_logo.png" alt />

@@ -1,5 +1,5 @@
 <template>
-  <div class="sign-in mx-auto mt-5">
+  <div class="sign-in mx-auto">
     <div class="jumbotron px-5 py-4 mx-auto">
       <h1 class="text-center">Login</h1>
       <form id="sign-in-form" @submit.prevent="login">
@@ -145,6 +145,7 @@ export default {
 
 .sign-in {
   height: 80%;
+  margin-top: 150px !important;
   h1 {
     @include big-font();
     color: $primary;

@@ -1,9 +1,9 @@
 ;<template>
-  <div class="students mx-auto mt-4 mb-5">
+  <div class="students mx-auto mt-5 mb-5">
     <form class="form-inline search mb-1 mr-3 mx-2">
       <input
         v-model="searchField"
-        class="form-control mr-2 my-1"
+        class="form-control mr-2 my-1 mt-5"
         type="search"
         id="search"
         placeholder="Search by student name"
