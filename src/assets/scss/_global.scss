@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+
+$primary: #bf281a;
+$secondary: #203277;
+
+@mixin main-font() {
+	font-family: 'Open Sans', sans-serif;
+}
+@mixin big-font() {
+	font-family: 'Montserrat', sans-serif;
+}
+
+body {
+	@include main-font();
+}
+
+a {
+	color: white;
+	&:hover {
+		color: white;
+	}
+}
+
+.heading {
+	background: rgb(214, 214, 214);
+	h1 {
+		@include big-font();
+		color: $primary;
+		span {
+			font-size: 35px;
+		}
+	}
+	border-bottom: 2px dashed $primary;
+}
