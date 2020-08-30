@@ -216,7 +216,14 @@
               >Are you sure you want to submit your scholarship? Once you submit it, you cannot unsubmit. However, you will still be able to make changes.</div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" @click.prevent="onSubmit()">Submit</button>
+                <button type="button" class="btn btn-primary" @click.prevent="onSubmit()">
+                  <span
+                    ref="spinner"
+                    class="spinner-border spinner-border-sm d-none"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>Submit
+                </button>
                 <p class="text-success" v-if="feedback">{{feedback}}</p>
                 <p class="text-danger" v-if="error">{{error}}</p>
               </div>
@@ -224,6 +231,10 @@
           </div>
         </div>
       </div>
+      <p
+        v-if="scholarship.submitted"
+        class="mt-3 bg-dark p-3 rounded text-white"
+      >You have already submitted this scholarship. Editing & saving will update your scholarship for any students who view it in the future.</p>
     </form>
 
     <div class="fixed-bottom save-changes-container px-5 py-4 d-flex">
@@ -286,13 +297,15 @@ export default {
       this.saved = true;
     },
     async onSubmit() {
+      this.$refs.spinner.classList.remove("d-none");
+
       if (this.scholarship.name) {
         this.scholarship.submitted = true;
+
         await this.save();
       }
-      $("#submit-modal").modal("hide");
-      $("body").removeClass("modal-open");
-      $(".modal-backdrop").remove();
+      this.$refs.spinner.classList.add("d-none");
+      $("#submit-modal").modal("toggle");
     },
     pastDeadline() {
       if (this.userData.scholarship.deadline) {

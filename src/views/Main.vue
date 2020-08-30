@@ -67,6 +67,7 @@ export default {
       background: lighten($primary, 50);
     }
   }
+  margin-top: 60px !important;
   @media (min-width: 992px) {
     width: 70%;
     margin-top: 20vh !important;

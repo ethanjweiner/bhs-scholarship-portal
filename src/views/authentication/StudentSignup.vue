@@ -80,14 +80,17 @@
       class="px-2 text-secondary rounded bg-white"
       style="font-size: 15px;"
     >Please contact a school administrator to sign up as a donor or guidance counselor.</p>
+    <LoadingScreen :display="displayLoadingScreen" />
   </div>
 </template>
 
 <script>
 import { db, auth } from "@/firebase/init";
 import { mapActions } from "vuex";
+import LoadingScreen from "@/components/LoadingScreen";
 export default {
   name: "StudentSignup",
+  components: { LoadingScreen },
   data() {
     return {
       form: {
@@ -100,7 +103,8 @@ export default {
         email: null,
         password: null
       },
-      feedback: null
+      feedback: null,
+      displayLoadingScreen: false
     };
   },
   methods: {
@@ -117,9 +121,11 @@ export default {
           if (!this.form.email.includes("@mybps.me")) {
             throw new Error("Please use your @mybps.me email address.");
           }
+          this.displayLoadingScreen = true;
           await this.createStudent({
             form: this.form
           });
+          this.displayLoadingScreen = false;
         } catch (err) {
           this.feedback = err.message;
         }

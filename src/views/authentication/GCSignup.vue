@@ -38,14 +38,17 @@
         <button type="submit" class="btn shadow">Signup</button>
       </form>
     </div>
+    <LoadingScreen :display="displayLoadingScreen" />
   </div>
 </template>
 
 <script>
 import { db, auth } from "@/firebase/init";
 import { mapActions } from "vuex";
+import LoadingScreen from "@/components/LoadingScreen";
 export default {
   name: "GCSignup",
+  components: { LoadingScreen },
   data() {
     return {
       verified: false,
@@ -73,9 +76,11 @@ export default {
       ) {
         this.feedback = null;
         try {
+          this.displayLoadingScreen = true;
           await this.createGC({
             form: this.form
           });
+          this.displayLoadingScreen = false;
         } catch (err) {
           this.feedback = err.message;
         }
