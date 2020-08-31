@@ -83,6 +83,8 @@ export default {
           this.displayLoadingScreen = false;
         } catch (err) {
           this.feedback = err.message;
+        } finally {
+          this.displayLoadingScreen = false;
         }
       } else {
         this.feedback =

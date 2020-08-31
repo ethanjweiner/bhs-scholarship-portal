@@ -124,9 +124,12 @@ export default {
         try {
           this.displayLoadingScreen = true;
           await this.signIn(this.form);
-          this.displayLoadingScreen = false;
         } catch (err) {
           this.feedback = err.message;
+        }
+        finally {
+          this.displayLoadingScreen = false;
+
         }
       } else {
         this.feedback = "Please enter an email & password";

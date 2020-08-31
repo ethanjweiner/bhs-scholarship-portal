@@ -125,9 +125,10 @@ export default {
           await this.createStudent({
             form: this.form
           });
-          this.displayLoadingScreen = false;
         } catch (err) {
           this.feedback = err.message;
+        } finally {
+          this.displayLoadingScreen = false;
         }
       } else {
         this.feedback =
